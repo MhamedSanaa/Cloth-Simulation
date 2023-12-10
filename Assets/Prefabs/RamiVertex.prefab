@@ -101,3 +101,4 @@ MonoBehaviour:
   dragCoefficient: 0.4
   isStationary: 0
   velocity: {x: 0, y: 0, z: 0}
+  windZone: {fileID: 5042303190400972733, guid: 7de416a075794ac4696071561d1e6a49, type: 3}

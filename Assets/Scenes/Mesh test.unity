@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44402242, g: 0.49316543, b: 0.5722324, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -123,6 +123,54 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &937397321
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 937397322}
+  - component: {fileID: 937397323}
+  m_Layer: 0
+  m_Name: WindZone
+  m_TagString: WindZone
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &937397322
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 937397321}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -5, y: -55, z: 10}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &937397323
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 937397321}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95fd6e92b72a3d6448c1ec29ddb086de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  windVector: {x: 0, y: 0, z: 0}
+  windStrength: 10
+  windRadius: 5
+  windVelocity: {x: 0, y: 0, z: 0}
 --- !u!1 &1087861919
 GameObject:
   m_ObjectHideFlags: 0
@@ -248,12 +296,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   vertex: {fileID: 3642905963085819462, guid: c2145be4eb726d64ca358bfaf83b30ad, type: 3}
   spring: {fileID: 5207856959454375359, guid: e5b1125fdf796f04fa2436711afe50ef, type: 3}
-  linesNumber: 10
-  columnsNumber: 10
-  distance: 6
-  structuralSpringStiffness: 6
-  shearSpringStiffness: 6
-  flexionSpringStiffness: 6
+  linesNumber: 20
+  columnsNumber: 20
+  distance: 3
+  structuralSpringStiffness: 100
+  shearSpringStiffness: 10
+  flexionSpringStiffness: 1
 --- !u!4 &2005831854
 Transform:
   m_ObjectHideFlags: 0
@@ -263,7 +311,7 @@ Transform:
   m_GameObject: {fileID: 2005831852}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.6630039, y: -10.430384, z: 5.54727}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -355,7 +403,7 @@ Transform:
   m_GameObject: {fileID: 2106892876}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: -10}
+  m_LocalPosition: {x: 0, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -368,3 +416,4 @@ SceneRoots:
   - {fileID: 2106892879}
   - {fileID: 1087861921}
   - {fileID: 2005831854}
+  - {fileID: 937397322}

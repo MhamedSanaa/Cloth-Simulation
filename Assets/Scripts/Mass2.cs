@@ -17,12 +17,13 @@ public class Mass2 : MonoBehaviour
 
     public IDictionary<string, Vector3> AllSpringForces = new Dictionary<string, Vector3>();
     Vector3 ForcesSum;
+    public GameObject windZone;
     
 
     void Start(){
         //Hashtable AllForces = new Hashtable();
         //AllForces = new Dictionary<string, Vector3>();
-
+        windZone = GameObject.FindGameObjectWithTag("WindZone");
     }
 
     public float getMass(){
@@ -53,8 +54,14 @@ public class Mass2 : MonoBehaviour
 
     void Update(){
 
-        if(!isStationary){   
-            ForcesSum = (new Vector3(0f,-config.g,0f))*mass;
+        if(!isStationary){
+            ForcesSum = (new Vector3(0f, -config.g, 0f)) * mass;
+            float distance = MathF.Sqrt(MathF.Pow(transform.position.y - windZone.transform.position.y,2)+MathF.Pow(transform.position.z - windZone.transform.position.z,2));
+            if(distance<= windZone.GetComponent<WindVelocity>().windRadius)
+            {
+                float distanceFactor = 1.0f - (distance / windZone.GetComponent<WindVelocity>().windRadius);
+                ForcesSum += Vector3.Scale(((windZone.GetComponent<WindVelocity>().windVelocity* distanceFactor)-velocity),new Vector3(transform.position.x,0f,0f).normalized);
+            }
             
             foreach(KeyValuePair<string, Vector3> force in AllSpringForces){
                 ForcesSum += force.Value;

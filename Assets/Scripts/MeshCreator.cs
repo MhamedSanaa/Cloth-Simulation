@@ -24,11 +24,11 @@ public class MeshCreator : MonoBehaviour
             }
         }
         // Fixing top 2 corner vertices
-        //mesh[0,0].GetComponent<Mass2>().setStationary(true);
-        //mesh[0,columnsNumber-1].GetComponent<Mass2>().setStationary(true);
-        for (int i=0; i< columnsNumber ; i++){
+        mesh[0,0].GetComponent<Mass2>().setStationary(true);
+        mesh[0,columnsNumber-1].GetComponent<Mass2>().setStationary(true);
+        /*for (int i=0; i< columnsNumber ; i++){
             mesh[0,i].GetComponent<Mass2>().setStationary(true);
-        }
+        }*/
 
         
 
