@@ -5,9 +5,11 @@ using UnityEngine;
 
 public class Mass2 : MonoBehaviour
 {
-    public float mass = 1f;
+    
     public PhysicsConfig config;
-    public float dragCoefficient = 0.4f;
+    float g = 9.81f;
+    public float mass ;
+    public float dragCoefficient ;
     Vector3 dragForce;
 
     public bool isStationary = false;
@@ -24,6 +26,7 @@ public class Mass2 : MonoBehaviour
         //Hashtable AllForces = new Hashtable();
         //AllForces = new Dictionary<string, Vector3>();
         windZone = GameObject.FindGameObjectWithTag("WindZone");
+
     }
 
     public float getMass(){
@@ -54,8 +57,11 @@ public class Mass2 : MonoBehaviour
 
     void Update(){
 
+        mass = config.vertexMass;
+        dragCoefficient = config.vertexDragCoefficient;
+        
         if(!isStationary){
-            ForcesSum = (new Vector3(0f, -config.g, 0f)) * mass;
+            ForcesSum = (new Vector3(0f, -g, 0f)) * mass;
             float distance = MathF.Sqrt(MathF.Pow(transform.position.y - windZone.transform.position.y,2)+MathF.Pow(transform.position.z - windZone.transform.position.z,2));
             if(distance<= windZone.GetComponent<WindVelocity>().windRadius)
             {

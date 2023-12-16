@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class Spring2 : MonoBehaviour
 {
-    public float relaxedLength = 3f;
-    public float springCoefficient = 6f;
+    public PhysicsConfig config;
+    float relaxedLength = 3f;
+    float springCoefficient = 6f;
     
-    public float dampingCoefficient = 0.4f;
+    float dampingCoefficient;
     public GameObject object1;
     public GameObject object2;
 
@@ -28,6 +29,7 @@ public class Spring2 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        dampingCoefficient = config.springDampingCoefficient;
 
         if(object1 != null && object2 !=null){
             //Debug.DrawLine(object1.transform.position, object2.transform.position, Color.yellow);
@@ -44,6 +46,9 @@ public class Spring2 : MonoBehaviour
 
     public void setStiffness( float stiff){
         springCoefficient = stiff ;
+    }
+    public void setRelaxed( float rlen){
+        relaxedLength = rlen ;
     }
     public void setObject1( GameObject v){
         object1 = v ;

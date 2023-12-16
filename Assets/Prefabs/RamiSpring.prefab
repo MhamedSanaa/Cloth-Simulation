@@ -45,9 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 902f4d1a2c39d134090449dbf89bc3d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  relaxedLength: 4
-  springCoefficient: 6
-  dampingCoefficient: 0.4
+  config: {fileID: 11400000, guid: fb631a32fe49d2941a58a196802f3200, type: 2}
   object1: {fileID: 0}
   object2: {fileID: 0}
 --- !u!120 &3484684830438979374

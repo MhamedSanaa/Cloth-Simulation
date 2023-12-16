@@ -12,6 +12,9 @@ public class MeshCreator : MonoBehaviour
     public float structuralSpringStiffness = 6f; // Type 1
     public float shearSpringStiffness = 6f; // Type 2
     public float flexionSpringStiffness = 6f; // Type 3 
+    public float structuralSpringLength = 3f; // Type 1
+    public float shearSpringLength = 3f; // Type 2
+    public float flexionSpringLength = 3f; // Type 3 
     GameObject[,] mesh;
     // Start is called before the first frame update
     void Start()
@@ -50,18 +53,13 @@ public class MeshCreator : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     void createSpringType1Right(int i,int j){
         GameObject st1 = Instantiate(spring, new Vector3(0,0,0),Quaternion.identity);
         st1.name = ("spring"+i+"-"+j+"T1R");
         st1.GetComponent<Spring2>().setObject1(mesh[i,j]);
         st1.GetComponent<Spring2>().setObject2(mesh[i,j+1]);
         st1.GetComponent<Spring2>().setStiffness(structuralSpringStiffness);
+        st1.GetComponent<Spring2>().setStiffness(structuralSpringLength);
     }
 
     void createSpringType1Down(int i,int j){
@@ -70,6 +68,7 @@ public class MeshCreator : MonoBehaviour
         st1.GetComponent<Spring2>().setObject1(mesh[i,j]);
         st1.GetComponent<Spring2>().setObject2(mesh[i+1,j]);
         st1.GetComponent<Spring2>().setStiffness(structuralSpringStiffness);
+        st1.GetComponent<Spring2>().setStiffness(structuralSpringLength);
     }
 
     // Upper right -> down left /
@@ -79,6 +78,7 @@ public class MeshCreator : MonoBehaviour
         st2.GetComponent<Spring2>().setObject1(mesh[i,j+1]);
         st2.GetComponent<Spring2>().setObject2(mesh[i+1,j]);
         st2.GetComponent<Spring2>().setStiffness(shearSpringStiffness);
+        st2.GetComponent<Spring2>().setStiffness(shearSpringLength);
     }
 
     // Upper Left -> down right \
@@ -88,6 +88,7 @@ public class MeshCreator : MonoBehaviour
         st2.GetComponent<Spring2>().setObject1(mesh[i,j]);
         st2.GetComponent<Spring2>().setObject2(mesh[i+1,j+1]);
         st2.GetComponent<Spring2>().setStiffness(shearSpringStiffness);
+        st2.GetComponent<Spring2>().setStiffness(shearSpringLength);
     }
 
     void createSpringType3Right(int i,int j){
@@ -96,6 +97,7 @@ public class MeshCreator : MonoBehaviour
         st3.GetComponent<Spring2>().setObject1(mesh[i,j]);
         st3.GetComponent<Spring2>().setObject2(mesh[i,j+2]);
         st3.GetComponent<Spring2>().setStiffness(flexionSpringStiffness);
+        st3.GetComponent<Spring2>().setStiffness(flexionSpringLength);
     }
 
     void createSpringType3Down(int i,int j){
@@ -104,5 +106,6 @@ public class MeshCreator : MonoBehaviour
         st3.GetComponent<Spring2>().setObject1(mesh[i,j]);
         st3.GetComponent<Spring2>().setObject2(mesh[i+2,j]);
         st3.GetComponent<Spring2>().setStiffness(flexionSpringStiffness);
+        st3.GetComponent<Spring2>().setStiffness(flexionSpringLength);
     }
 }
