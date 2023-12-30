@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: config
   m_EditorClassIdentifier: 
   vertexMass: 0.5
-  vertexDragCoefficient: 0.8
+  vertexDragCoefficient: 1
   springDampingCoefficient: 1
