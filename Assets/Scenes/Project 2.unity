@@ -265,11 +265,11 @@ MonoBehaviour:
   spring: {fileID: 5207856959454375359, guid: c74eca45a361bff43a7b20f1e0219bee, type: 3}
   linesNumber: 10
   columnsNumber: 10
-  distance: 8
-  structuralSpringStiffness: 15
-  shearSpringStiffness: 15
-  structuralSpringLength: 7
-  shearSpringLength: 7
+  distance: 10
+  structuralSpringStiffness: 4
+  shearSpringStiffness: 4
+  structuralSpringLength: 15
+  shearSpringLength: 15
 --- !u!1 &2106892876
 GameObject:
   m_ObjectHideFlags: 0

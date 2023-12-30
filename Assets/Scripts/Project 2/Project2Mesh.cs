@@ -21,15 +21,33 @@ public class Project2Mesh : MonoBehaviour
         mesh = new GameObject[linesNumber,columnsNumber];
         for (int i=0; i < linesNumber ; i++){
             for ( int j=0; j < columnsNumber ; j++){
-                mesh[i,j]= Instantiate(vertex, new Vector3(i*distance,0,j*distance),Quaternion.identity);
+                mesh[i,j]= Instantiate(vertex, new Vector3(i * distance, 0, j * distance),Quaternion.identity);
+                mesh[i, j].name = "Vertex_" + i + "_" + j;
+                //mesh[i,j].GetComponent<Project2Mass>().setStationary(true); 
             }
         }
         // Fixing top 2 corner vertices
-        mesh[0,0].GetComponent<Project2Mass>().setStationary(true);
-        mesh[0,columnsNumber-1].GetComponent<Project2Mass>().setStationary(true);
+        // mesh[0,0].GetComponent<Project2Mass>().setStationary(true);
+        // mesh[0,columnsNumber-1].GetComponent<Project2Mass>().setStationary(true);
+        // mesh[linesNumber-1,0].GetComponent<Project2Mass>().setStationary(true);
+        // mesh[linesNumber-1,columnsNumber-1].GetComponent<Project2Mass>().setStationary(true);
         /*for (int i=0; i< columnsNumber ; i++){
             mesh[0,i].GetComponent<Project2Mass>().setStationary(true);
         }*/
+
+
+         // fix the edges
+        for(int i = 0; i < linesNumber; i++)
+        {
+            mesh[i, 0].GetComponent<Project2Mass>().setStationary(true);
+            mesh[i, columnsNumber-1].GetComponent<Project2Mass>().setStationary(true);
+        }
+
+        for (int j = 0; j < columnsNumber; j++)
+        {
+            mesh[0, j].GetComponent<Project2Mass>().setStationary(true);
+            mesh[linesNumber-1, j].GetComponent<Project2Mass>().setStationary(true);
+        }
 
         
 
@@ -40,9 +58,23 @@ public class Project2Mesh : MonoBehaviour
                 if (i < linesNumber -1)
                     createSpringType1Down(i,j);
                 if ( (i < linesNumber -1) && (j < columnsNumber -1) ){
-                    createSpringType2UlDr(i,j);
-                    createSpringType2UrDl(i,j);
+                    if(j % 2 == 0){
+                        if (i % 2 == 0 ){
+                            createSpringType2UlDr(i,j);
+                        }
+                        if (i % 2 != 0 ){
+                            createSpringType2UrDl(i,j);
+                        }   
+                    }else{
+                        if (i % 2 == 0 ){
+                            createSpringType2UrDl(i,j); 
+                        }
+                        if (i % 2 != 0 ){
+                            createSpringType2UlDr(i,j);
+                        }   
                     }
+                    
+                }
             }
         }
     }

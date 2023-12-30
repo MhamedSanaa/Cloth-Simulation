@@ -7,7 +7,6 @@ public class Project2Mass : MonoBehaviour
 {
     
     public PhysicsConfig config;
-    float g = 9.81f;
     public float mass ;
     public float dragCoefficient ;
     Vector3 dragForce;
@@ -59,8 +58,7 @@ public class Project2Mass : MonoBehaviour
         dragCoefficient = config.vertexDragCoefficient;
         
         if(!isStationary){
-            ForcesSum = (new Vector3(0f, -g, 0f)) * mass;
-            
+            ForcesSum = new Vector3 (0f,0f,0f);
             foreach(KeyValuePair<string, Vector3> force in AllSpringForces){
                 ForcesSum += force.Value;
             }
