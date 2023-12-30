@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class Project2Mesh : MonoBehaviour
 {
     public GameObject vertex;
@@ -9,14 +10,14 @@ public class Project2Mesh : MonoBehaviour
     public int linesNumber = 2;
     public int columnsNumber = 2;
     public int distance = 3;
-    public float structuralSpringStiffness = 6f; // Type 1
-    public float shearSpringStiffness = 6f; // Type 2
-    public float structuralSpringLength = 3f; // Type 1
-    public float shearSpringLength = 3f; // Type 2
+    public float structuralSpringLength ; // Type 1
+    public float shearSpringLength ; // Type 2
     GameObject[,] mesh;
     // Start is called before the first frame update
     void Start()
     {
+        structuralSpringLength = distance;
+        shearSpringLength = distance * Mathf.Sqrt(2);
         // Vertices init
         mesh = new GameObject[linesNumber,columnsNumber];
         for (int i=0; i < linesNumber ; i++){
@@ -84,8 +85,7 @@ public class Project2Mesh : MonoBehaviour
         st1.name = ("spring"+i+"-"+j+"T1R");
         st1.GetComponent<Project2Springs>().setObject1(mesh[i,j]);
         st1.GetComponent<Project2Springs>().setObject2(mesh[i,j+1]);
-        st1.GetComponent<Project2Springs>().setStiffness(structuralSpringStiffness);
-        st1.GetComponent<Project2Springs>().setStiffness(structuralSpringLength);
+        st1.GetComponent<Project2Springs>().setRelaxed(structuralSpringLength);
     }
 
     void createSpringType1Down(int i,int j){
@@ -93,8 +93,7 @@ public class Project2Mesh : MonoBehaviour
         st1.name = ("spring"+i+"-"+j+"T1D");
         st1.GetComponent<Project2Springs>().setObject1(mesh[i,j]);
         st1.GetComponent<Project2Springs>().setObject2(mesh[i+1,j]);
-        st1.GetComponent<Project2Springs>().setStiffness(structuralSpringStiffness);
-        st1.GetComponent<Project2Springs>().setStiffness(structuralSpringLength);
+        st1.GetComponent<Project2Springs>().setRelaxed(structuralSpringLength);
     }
 
     // Upper right -> down left /
@@ -103,8 +102,7 @@ public class Project2Mesh : MonoBehaviour
         st2.name = ("spring"+i+"-"+j+"T2UrDl");
         st2.GetComponent<Project2Springs>().setObject1(mesh[i,j+1]);
         st2.GetComponent<Project2Springs>().setObject2(mesh[i+1,j]);
-        st2.GetComponent<Project2Springs>().setStiffness(shearSpringStiffness);
-        st2.GetComponent<Project2Springs>().setStiffness(shearSpringLength);
+        st2.GetComponent<Project2Springs>().setRelaxed(shearSpringLength);
     }
 
     // Upper Left -> down right \
@@ -113,7 +111,6 @@ public class Project2Mesh : MonoBehaviour
         st2.name = ("spring"+i+"-"+j+"T2UlDr");
         st2.GetComponent<Project2Springs>().setObject1(mesh[i,j]);
         st2.GetComponent<Project2Springs>().setObject2(mesh[i+1,j+1]);
-        st2.GetComponent<Project2Springs>().setStiffness(shearSpringStiffness);
-        st2.GetComponent<Project2Springs>().setStiffness(shearSpringLength);
+        st2.GetComponent<Project2Springs>().setRelaxed(shearSpringLength);
     }
 }

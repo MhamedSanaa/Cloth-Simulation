@@ -97,7 +97,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   config: {fileID: 11400000, guid: fb631a32fe49d2941a58a196802f3200, type: 2}
-  mass: 0
-  dragCoefficient: 0
+  mass: 0.5
+  dragCoefficient: 0.1
   isStationary: 0
   velocity: {x: 0, y: 0, z: 0}
+  sphereObject: {fileID: 0}

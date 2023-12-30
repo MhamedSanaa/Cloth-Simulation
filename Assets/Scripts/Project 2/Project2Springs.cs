@@ -6,9 +6,9 @@ public class Project2Springs : MonoBehaviour
 {
     public PhysicsConfig config;
     float relaxedLength = 3f;
-    float springCoefficient = 6f;
+    public float springCoefficient = 6f;
     
-    float dampingCoefficient;
+    public float dampingCoefficient;
     public GameObject object1;
     public GameObject object2;
 
@@ -44,9 +44,7 @@ public class Project2Springs : MonoBehaviour
             }
     }
 
-    public void setStiffness( float stiff){
-        springCoefficient = stiff ;
-    }
+    
     public void setRelaxed( float rlen){
         relaxedLength = rlen ;
     }

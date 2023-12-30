@@ -150,5 +150,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   config: {fileID: 11400000, guid: fb631a32fe49d2941a58a196802f3200, type: 2}
+  springCoefficient: 20
+  dampingCoefficient: 0.8
   object1: {fileID: 0}
   object2: {fileID: 0}
