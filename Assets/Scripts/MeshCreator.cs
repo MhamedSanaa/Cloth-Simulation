@@ -12,7 +12,7 @@ public class MeshCreator : MonoBehaviour
     public float structuralSpringStiffness = 6f; // Type 1
     public float shearSpringStiffness = 6f; // Type 2
     public float flexionSpringStiffness = 6f; // Type 3 
-    GameObject[,] mesh;
+    public GameObject[,] mesh;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,16 +21,22 @@ public class MeshCreator : MonoBehaviour
         for (int i=0; i < linesNumber ; i++){
             for ( int j=0; j < columnsNumber ; j++){
                 mesh[i,j]= Instantiate(vertex, new Vector3(i*distance,0,j*distance),Quaternion.identity);
+                mesh[i,j].transform.name = $"vertex {i},{j}";
+                mesh[i, j].GetComponent<Mass3>().indexj = j;
+                mesh[i, j].GetComponent<Mass3>().indexi = i;
             }
         }
         // Fixing top 2 corner vertices
-        mesh[0,0].GetComponent<Mass2>().setStationary(true);
-        mesh[0,columnsNumber-1].GetComponent<Mass2>().setStationary(true);
+        //mesh[0,0].GetComponent<Mass2>().setStationary(true);
+        //mesh[0,columnsNumber-1].GetComponent<Mass2>().setStationary(true);
+
+        mesh[0, 0].GetComponent<Mass3>().setStationary(true);
+        mesh[0, columnsNumber - 1].GetComponent<Mass3>().setStationary(true);
         /*for (int i=0; i< columnsNumber ; i++){
             mesh[0,i].GetComponent<Mass2>().setStationary(true);
         }*/
 
-        
+
 
         for (int i=0; i< linesNumber ; i++){
             for ( int j=0; j<columnsNumber ; j++){
@@ -48,12 +54,6 @@ public class MeshCreator : MonoBehaviour
                     createSpringType3Down(i,j);
             }
         }
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     void createSpringType1Right(int i,int j){
